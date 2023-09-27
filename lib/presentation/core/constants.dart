@@ -12,5 +12,12 @@ const Widget kWidthMedium = SizedBox(width: 10);
 const Widget kWidth = SizedBox(width: 15);
 const Widget kWidthLarge = SizedBox(width: 20);
 
+// constant images
 const AssetImage kLogoLight = AssetImage("assets/images/notable_light.png");
 const AssetImage kLogoDark = AssetImage("assets/images/notable_dark.png");
+
+// constant border
+final kTextFormFieldBorder = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(10.0),
+  borderSide: BorderSide.none,
+);

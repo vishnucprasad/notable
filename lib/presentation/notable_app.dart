@@ -10,6 +10,11 @@ class NotableApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(seconds: 3));
+      _appRouter.replace(const SigninRoute());
+    });
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: buildLightTheme(),
