@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notable/application/auth/signin/signin_bloc.dart';
 import 'package:notable/presentation/core/colors.dart';
 
 class SigninButton extends StatelessWidget {
@@ -22,7 +24,9 @@ class SigninButton extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
         ),
-        onPressed: () {},
+        onPressed: () => context
+            .read<SigninBloc>()
+            .add(const SigninEvent.signinButtonPressed()),
         child: const Text(
           'Signin',
           style: TextStyle(

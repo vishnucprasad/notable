@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notable/application/auth/signin/signin_bloc.dart';
 import 'package:notable/presentation/core/colors.dart';
 
 class SigninWithGoogleButton extends StatelessWidget {
@@ -23,7 +25,9 @@ class SigninWithGoogleButton extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
         ),
-        onPressed: () {},
+        onPressed: () => context
+            .read<SigninBloc>()
+            .add(const SigninEvent.signinWithGoogle()),
         child: const Text(
           'Signin with google',
           style: TextStyle(

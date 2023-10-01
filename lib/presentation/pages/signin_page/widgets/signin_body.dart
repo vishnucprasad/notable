@@ -22,7 +22,7 @@ class SigninBody extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: size.height / 2,
+              height: size.height / 2.25,
               width: size.width - size.width / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -31,7 +31,7 @@ class SigninBody extends StatelessWidget {
               ),
             ),
             Container(
-              height: size.height / 2,
+              height: size.height - size.height / 2.25,
               padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
                 color: isDarkMode ? kSecondaryDarkColor : kSecondaryLightColor,

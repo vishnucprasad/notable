@@ -44,9 +44,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       return right(unit);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'invalid-email' ||
-          e.code == 'user-not-found' ||
-          e.code == 'wrong-password') {
+      if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
         return left(const AuthFailure.invalidCredentials());
       }
 

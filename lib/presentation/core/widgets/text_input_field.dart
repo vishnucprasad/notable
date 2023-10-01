@@ -8,6 +8,7 @@ class TextInputField extends StatelessWidget {
     required this.onChanged,
     required this.validator,
     this.initialValue,
+    this.controller,
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText,
@@ -21,6 +22,7 @@ class TextInputField extends StatelessWidget {
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
   final String? initialValue;
+  final TextEditingController? controller;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool? obscureText;
@@ -35,9 +37,10 @@ class TextInputField extends StatelessWidget {
 
     return TextFormField(
       initialValue: initialValue,
+      controller: controller,
       cursorColor: isDarkMode ? kLightColor : kDarkColor,
       obscureText: obscureText ?? false,
-      maxLines: maxLines,
+      maxLines: obscureText == true ? 1 : maxLines,
       autovalidateMode: autoValidateMode,
       decoration: InputDecoration(
         filled: filled,
