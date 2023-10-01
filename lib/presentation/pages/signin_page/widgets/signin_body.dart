@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:notable/presentation/core/colors.dart';
 import 'package:notable/presentation/core/constants.dart';
@@ -6,7 +5,7 @@ import 'package:notable/presentation/pages/signin_page/widgets/email_input_field
 import 'package:notable/presentation/pages/signin_page/widgets/password_input_field.dart';
 import 'package:notable/presentation/pages/signin_page/widgets/remember_checkbox.dart';
 import 'package:notable/presentation/pages/signin_page/widgets/signin_button.dart';
-import 'package:notable/presentation/router/app_router.dart';
+import 'package:notable/presentation/pages/signin_page/widgets/signup_button.dart';
 
 class SigninBody extends StatelessWidget {
   const SigninBody({super.key});
@@ -23,7 +22,7 @@ class SigninBody extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: size.height / 2.25,
+              height: size.height / 2,
               width: size.width - size.width / 3,
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -32,7 +31,7 @@ class SigninBody extends StatelessWidget {
               ),
             ),
             Container(
-              height: size.height - size.height / 2.25,
+              height: size.height - size.height / 2,
               padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
                 color: isDarkMode ? kSecondaryDarkColor : kSecondaryLightColor,
@@ -57,21 +56,12 @@ class SigninBody extends StatelessWidget {
                   kHeightMedium,
                   const RememberCheckbox(),
                   kHeightMedium,
-                  const SigninButton(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text("Don't have an account ?"),
-                      TextButton(
-                        onPressed: () => context.pushRoute(const SignupRoute()),
-                        child: Text(
-                          'Signup',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
+                      Expanded(child: SigninButton()),
+                      kWidthMedium,
+                      Expanded(child: SignupButton()),
                     ],
                   ),
                 ],

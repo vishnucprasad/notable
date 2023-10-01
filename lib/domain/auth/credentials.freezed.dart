@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'signup_credentials.dart';
+part of 'credentials.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,29 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$SignupCredentials {
-  Name get name => throw _privateConstructorUsedError;
+mixin _$Credentials {
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SignupCredentialsCopyWith<SignupCredentials> get copyWith =>
+  $CredentialsCopyWith<Credentials> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SignupCredentialsCopyWith<$Res> {
-  factory $SignupCredentialsCopyWith(
-          SignupCredentials value, $Res Function(SignupCredentials) then) =
-      _$SignupCredentialsCopyWithImpl<$Res, SignupCredentials>;
+abstract class $CredentialsCopyWith<$Res> {
+  factory $CredentialsCopyWith(
+          Credentials value, $Res Function(Credentials) then) =
+      _$CredentialsCopyWithImpl<$Res, Credentials>;
   @useResult
-  $Res call({Name name, EmailAddress emailAddress, Password password});
+  $Res call({EmailAddress emailAddress, Password password});
 }
 
 /// @nodoc
-class _$SignupCredentialsCopyWithImpl<$Res, $Val extends SignupCredentials>
-    implements $SignupCredentialsCopyWith<$Res> {
-  _$SignupCredentialsCopyWithImpl(this._value, this._then);
+class _$CredentialsCopyWithImpl<$Res, $Val extends Credentials>
+    implements $CredentialsCopyWith<$Res> {
+  _$CredentialsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -47,15 +46,10 @@ class _$SignupCredentialsCopyWithImpl<$Res, $Val extends SignupCredentials>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
     Object? emailAddress = null,
     Object? password = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as Name,
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
@@ -69,36 +63,31 @@ class _$SignupCredentialsCopyWithImpl<$Res, $Val extends SignupCredentials>
 }
 
 /// @nodoc
-abstract class _$$SignupCredentialsImplCopyWith<$Res>
-    implements $SignupCredentialsCopyWith<$Res> {
-  factory _$$SignupCredentialsImplCopyWith(_$SignupCredentialsImpl value,
-          $Res Function(_$SignupCredentialsImpl) then) =
-      __$$SignupCredentialsImplCopyWithImpl<$Res>;
+abstract class _$$CredentialsImplCopyWith<$Res>
+    implements $CredentialsCopyWith<$Res> {
+  factory _$$CredentialsImplCopyWith(
+          _$CredentialsImpl value, $Res Function(_$CredentialsImpl) then) =
+      __$$CredentialsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Name name, EmailAddress emailAddress, Password password});
+  $Res call({EmailAddress emailAddress, Password password});
 }
 
 /// @nodoc
-class __$$SignupCredentialsImplCopyWithImpl<$Res>
-    extends _$SignupCredentialsCopyWithImpl<$Res, _$SignupCredentialsImpl>
-    implements _$$SignupCredentialsImplCopyWith<$Res> {
-  __$$SignupCredentialsImplCopyWithImpl(_$SignupCredentialsImpl _value,
-      $Res Function(_$SignupCredentialsImpl) _then)
+class __$$CredentialsImplCopyWithImpl<$Res>
+    extends _$CredentialsCopyWithImpl<$Res, _$CredentialsImpl>
+    implements _$$CredentialsImplCopyWith<$Res> {
+  __$$CredentialsImplCopyWithImpl(
+      _$CredentialsImpl _value, $Res Function(_$CredentialsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
     Object? emailAddress = null,
     Object? password = null,
   }) {
-    return _then(_$SignupCredentialsImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as Name,
+    return _then(_$CredentialsImpl(
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
@@ -113,13 +102,10 @@ class __$$SignupCredentialsImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SignupCredentialsImpl extends _SignupCredentials {
-  const _$SignupCredentialsImpl(
-      {required this.name, required this.emailAddress, required this.password})
+class _$CredentialsImpl extends _Credentials {
+  const _$CredentialsImpl({required this.emailAddress, required this.password})
       : super._();
 
-  @override
-  final Name name;
   @override
   final EmailAddress emailAddress;
   @override
@@ -127,15 +113,14 @@ class _$SignupCredentialsImpl extends _SignupCredentials {
 
   @override
   String toString() {
-    return 'SignupCredentials(name: $name, emailAddress: $emailAddress, password: $password)';
+    return 'Credentials(emailAddress: $emailAddress, password: $password)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SignupCredentialsImpl &&
-            (identical(other.name, name) || other.name == name) &&
+            other is _$CredentialsImpl &&
             (identical(other.emailAddress, emailAddress) ||
                 other.emailAddress == emailAddress) &&
             (identical(other.password, password) ||
@@ -143,31 +128,27 @@ class _$SignupCredentialsImpl extends _SignupCredentials {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, emailAddress, password);
+  int get hashCode => Object.hash(runtimeType, emailAddress, password);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SignupCredentialsImplCopyWith<_$SignupCredentialsImpl> get copyWith =>
-      __$$SignupCredentialsImplCopyWithImpl<_$SignupCredentialsImpl>(
-          this, _$identity);
+  _$$CredentialsImplCopyWith<_$CredentialsImpl> get copyWith =>
+      __$$CredentialsImplCopyWithImpl<_$CredentialsImpl>(this, _$identity);
 }
 
-abstract class _SignupCredentials extends SignupCredentials {
-  const factory _SignupCredentials(
-      {required final Name name,
-      required final EmailAddress emailAddress,
-      required final Password password}) = _$SignupCredentialsImpl;
-  const _SignupCredentials._() : super._();
+abstract class _Credentials extends Credentials {
+  const factory _Credentials(
+      {required final EmailAddress emailAddress,
+      required final Password password}) = _$CredentialsImpl;
+  const _Credentials._() : super._();
 
-  @override
-  Name get name;
   @override
   EmailAddress get emailAddress;
   @override
   Password get password;
   @override
   @JsonKey(ignore: true)
-  _$$SignupCredentialsImplCopyWith<_$SignupCredentialsImpl> get copyWith =>
+  _$$CredentialsImplCopyWith<_$CredentialsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -9,7 +9,6 @@ class SigninButton extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return SizedBox(
-      width: double.infinity,
       height: 50,
       child: ElevatedButton(
         style: ButtonStyle(

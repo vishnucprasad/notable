@@ -5,7 +5,7 @@ class SigninState with _$SigninState {
   const factory SigninState({
     required bool isSubmitting,
     required bool showValidationError,
-    required SigninCredentials credentials,
+    required Credentials credentials,
     required Option<Either<AuthFailure, Unit>> failureOrSuccessOption,
   }) = _SigninState;
 
@@ -13,7 +13,7 @@ class SigninState with _$SigninState {
     return SigninState(
       isSubmitting: false,
       showValidationError: false,
-      credentials: SigninCredentials.empty(),
+      credentials: Credentials.empty(),
       failureOrSuccessOption: none(),
     );
   }

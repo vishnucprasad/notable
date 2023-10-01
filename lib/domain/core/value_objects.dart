@@ -3,17 +3,6 @@ import 'package:notable/domain/core/value_failure.dart';
 import 'package:notable/domain/core/value_object.dart';
 import 'package:notable/domain/core/value_validators.dart';
 
-class Name extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-  factory Name(String input) {
-    return Name._(validateStringNotEmpty(input).flatMap(
-      (a) => validateName(a),
-    ));
-  }
-  const Name._(this.value);
-}
-
 class EmailAddress extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
