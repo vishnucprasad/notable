@@ -29,6 +29,10 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
           ),
           failureOrSuccessOption: none(),
         )),
+        obscureTextChanged: (e) async => emit(state.copyWith(
+          hidePassword: !state.hidePassword,
+          failureOrSuccessOption: none(),
+        )),
         signinButtonPressed: (e) async {
           Either<AuthFailure, Unit>? failureOrSuccess;
 
@@ -71,6 +75,17 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
             isSubmitting: false,
             showValidationError: true,
             failureOrSuccessOption: optionOf(failureOrSuccess),
+          ));
+        },
+        signinWithGoogle: (e) async {
+          emit(state.copyWith(
+            isSubmitting: true,
+            failureOrSuccessOption: none(),
+          ));
+          final failureOrSuccess = await _authFacade.signInWithGoogle();
+          emit(state.copyWith(
+            isSubmitting: false,
+            failureOrSuccessOption: some(failureOrSuccess),
           ));
         },
       );

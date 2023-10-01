@@ -9,4 +9,5 @@ abstract class IAuthFacade {
   Future<Either<AuthFailure, Unit>> signinWithEmailAndPassword({
     required Credentials credentials,
   });
+  Future<Either<AuthFailure, Unit>> signInWithGoogle();
 }

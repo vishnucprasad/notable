@@ -22,6 +22,7 @@ mixin _$AuthFailure {
     required TResult Function(String msg) serverFailure,
     required TResult Function() emailAlredyInUse,
     required TResult Function() invalidCredentials,
+    required TResult Function() cancelledByUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$AuthFailure {
     TResult? Function(String msg)? serverFailure,
     TResult? Function()? emailAlredyInUse,
     TResult? Function()? invalidCredentials,
+    TResult? Function()? cancelledByUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$AuthFailure {
     TResult Function(String msg)? serverFailure,
     TResult Function()? emailAlredyInUse,
     TResult Function()? invalidCredentials,
+    TResult Function()? cancelledByUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$AuthFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_EmailAlredyInUse value) emailAlredyInUse,
     required TResult Function(_InvalidCredentials value) invalidCredentials,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$AuthFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult? Function(_InvalidCredentials value)? invalidCredentials,
+    TResult? Function(_CancelledByUser value)? cancelledByUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$AuthFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult Function(_InvalidCredentials value)? invalidCredentials,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -154,6 +160,7 @@ class _$ClientFailureImpl implements _ClientFailure {
     required TResult Function(String msg) serverFailure,
     required TResult Function() emailAlredyInUse,
     required TResult Function() invalidCredentials,
+    required TResult Function() cancelledByUser,
   }) {
     return clientFailure(msg);
   }
@@ -165,6 +172,7 @@ class _$ClientFailureImpl implements _ClientFailure {
     TResult? Function(String msg)? serverFailure,
     TResult? Function()? emailAlredyInUse,
     TResult? Function()? invalidCredentials,
+    TResult? Function()? cancelledByUser,
   }) {
     return clientFailure?.call(msg);
   }
@@ -176,6 +184,7 @@ class _$ClientFailureImpl implements _ClientFailure {
     TResult Function(String msg)? serverFailure,
     TResult Function()? emailAlredyInUse,
     TResult Function()? invalidCredentials,
+    TResult Function()? cancelledByUser,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
@@ -191,6 +200,7 @@ class _$ClientFailureImpl implements _ClientFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_EmailAlredyInUse value) emailAlredyInUse,
     required TResult Function(_InvalidCredentials value) invalidCredentials,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
   }) {
     return clientFailure(this);
   }
@@ -202,6 +212,7 @@ class _$ClientFailureImpl implements _ClientFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult? Function(_InvalidCredentials value)? invalidCredentials,
+    TResult? Function(_CancelledByUser value)? cancelledByUser,
   }) {
     return clientFailure?.call(this);
   }
@@ -213,6 +224,7 @@ class _$ClientFailureImpl implements _ClientFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult Function(_InvalidCredentials value)? invalidCredentials,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
@@ -299,6 +311,7 @@ class _$ServerFailureImpl implements _ServerFailure {
     required TResult Function(String msg) serverFailure,
     required TResult Function() emailAlredyInUse,
     required TResult Function() invalidCredentials,
+    required TResult Function() cancelledByUser,
   }) {
     return serverFailure(msg);
   }
@@ -310,6 +323,7 @@ class _$ServerFailureImpl implements _ServerFailure {
     TResult? Function(String msg)? serverFailure,
     TResult? Function()? emailAlredyInUse,
     TResult? Function()? invalidCredentials,
+    TResult? Function()? cancelledByUser,
   }) {
     return serverFailure?.call(msg);
   }
@@ -321,6 +335,7 @@ class _$ServerFailureImpl implements _ServerFailure {
     TResult Function(String msg)? serverFailure,
     TResult Function()? emailAlredyInUse,
     TResult Function()? invalidCredentials,
+    TResult Function()? cancelledByUser,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -336,6 +351,7 @@ class _$ServerFailureImpl implements _ServerFailure {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_EmailAlredyInUse value) emailAlredyInUse,
     required TResult Function(_InvalidCredentials value) invalidCredentials,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
   }) {
     return serverFailure(this);
   }
@@ -347,6 +363,7 @@ class _$ServerFailureImpl implements _ServerFailure {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult? Function(_InvalidCredentials value)? invalidCredentials,
+    TResult? Function(_CancelledByUser value)? cancelledByUser,
   }) {
     return serverFailure?.call(this);
   }
@@ -358,6 +375,7 @@ class _$ServerFailureImpl implements _ServerFailure {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult Function(_InvalidCredentials value)? invalidCredentials,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -418,6 +436,7 @@ class _$EmailAlredyInUseImpl implements _EmailAlredyInUse {
     required TResult Function(String msg) serverFailure,
     required TResult Function() emailAlredyInUse,
     required TResult Function() invalidCredentials,
+    required TResult Function() cancelledByUser,
   }) {
     return emailAlredyInUse();
   }
@@ -429,6 +448,7 @@ class _$EmailAlredyInUseImpl implements _EmailAlredyInUse {
     TResult? Function(String msg)? serverFailure,
     TResult? Function()? emailAlredyInUse,
     TResult? Function()? invalidCredentials,
+    TResult? Function()? cancelledByUser,
   }) {
     return emailAlredyInUse?.call();
   }
@@ -440,6 +460,7 @@ class _$EmailAlredyInUseImpl implements _EmailAlredyInUse {
     TResult Function(String msg)? serverFailure,
     TResult Function()? emailAlredyInUse,
     TResult Function()? invalidCredentials,
+    TResult Function()? cancelledByUser,
     required TResult orElse(),
   }) {
     if (emailAlredyInUse != null) {
@@ -455,6 +476,7 @@ class _$EmailAlredyInUseImpl implements _EmailAlredyInUse {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_EmailAlredyInUse value) emailAlredyInUse,
     required TResult Function(_InvalidCredentials value) invalidCredentials,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
   }) {
     return emailAlredyInUse(this);
   }
@@ -466,6 +488,7 @@ class _$EmailAlredyInUseImpl implements _EmailAlredyInUse {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult? Function(_InvalidCredentials value)? invalidCredentials,
+    TResult? Function(_CancelledByUser value)? cancelledByUser,
   }) {
     return emailAlredyInUse?.call(this);
   }
@@ -477,6 +500,7 @@ class _$EmailAlredyInUseImpl implements _EmailAlredyInUse {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult Function(_InvalidCredentials value)? invalidCredentials,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     required TResult orElse(),
   }) {
     if (emailAlredyInUse != null) {
@@ -532,6 +556,7 @@ class _$InvalidCredentialsImpl implements _InvalidCredentials {
     required TResult Function(String msg) serverFailure,
     required TResult Function() emailAlredyInUse,
     required TResult Function() invalidCredentials,
+    required TResult Function() cancelledByUser,
   }) {
     return invalidCredentials();
   }
@@ -543,6 +568,7 @@ class _$InvalidCredentialsImpl implements _InvalidCredentials {
     TResult? Function(String msg)? serverFailure,
     TResult? Function()? emailAlredyInUse,
     TResult? Function()? invalidCredentials,
+    TResult? Function()? cancelledByUser,
   }) {
     return invalidCredentials?.call();
   }
@@ -554,6 +580,7 @@ class _$InvalidCredentialsImpl implements _InvalidCredentials {
     TResult Function(String msg)? serverFailure,
     TResult Function()? emailAlredyInUse,
     TResult Function()? invalidCredentials,
+    TResult Function()? cancelledByUser,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -569,6 +596,7 @@ class _$InvalidCredentialsImpl implements _InvalidCredentials {
     required TResult Function(_ServerFailure value) serverFailure,
     required TResult Function(_EmailAlredyInUse value) emailAlredyInUse,
     required TResult Function(_InvalidCredentials value) invalidCredentials,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
   }) {
     return invalidCredentials(this);
   }
@@ -580,6 +608,7 @@ class _$InvalidCredentialsImpl implements _InvalidCredentials {
     TResult? Function(_ServerFailure value)? serverFailure,
     TResult? Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult? Function(_InvalidCredentials value)? invalidCredentials,
+    TResult? Function(_CancelledByUser value)? cancelledByUser,
   }) {
     return invalidCredentials?.call(this);
   }
@@ -591,6 +620,7 @@ class _$InvalidCredentialsImpl implements _InvalidCredentials {
     TResult Function(_ServerFailure value)? serverFailure,
     TResult Function(_EmailAlredyInUse value)? emailAlredyInUse,
     TResult Function(_InvalidCredentials value)? invalidCredentials,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
     required TResult orElse(),
   }) {
     if (invalidCredentials != null) {
@@ -602,4 +632,124 @@ class _$InvalidCredentialsImpl implements _InvalidCredentials {
 
 abstract class _InvalidCredentials implements AuthFailure {
   const factory _InvalidCredentials() = _$InvalidCredentialsImpl;
+}
+
+/// @nodoc
+abstract class _$$CancelledByUserImplCopyWith<$Res> {
+  factory _$$CancelledByUserImplCopyWith(_$CancelledByUserImpl value,
+          $Res Function(_$CancelledByUserImpl) then) =
+      __$$CancelledByUserImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CancelledByUserImplCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$CancelledByUserImpl>
+    implements _$$CancelledByUserImplCopyWith<$Res> {
+  __$$CancelledByUserImplCopyWithImpl(
+      _$CancelledByUserImpl _value, $Res Function(_$CancelledByUserImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CancelledByUserImpl implements _CancelledByUser {
+  const _$CancelledByUserImpl();
+
+  @override
+  String toString() {
+    return 'AuthFailure.cancelledByUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CancelledByUserImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String msg) clientFailure,
+    required TResult Function(String msg) serverFailure,
+    required TResult Function() emailAlredyInUse,
+    required TResult Function() invalidCredentials,
+    required TResult Function() cancelledByUser,
+  }) {
+    return cancelledByUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String msg)? clientFailure,
+    TResult? Function(String msg)? serverFailure,
+    TResult? Function()? emailAlredyInUse,
+    TResult? Function()? invalidCredentials,
+    TResult? Function()? cancelledByUser,
+  }) {
+    return cancelledByUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String msg)? clientFailure,
+    TResult Function(String msg)? serverFailure,
+    TResult Function()? emailAlredyInUse,
+    TResult Function()? invalidCredentials,
+    TResult Function()? cancelledByUser,
+    required TResult orElse(),
+  }) {
+    if (cancelledByUser != null) {
+      return cancelledByUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ClientFailure value) clientFailure,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_EmailAlredyInUse value) emailAlredyInUse,
+    required TResult Function(_InvalidCredentials value) invalidCredentials,
+    required TResult Function(_CancelledByUser value) cancelledByUser,
+  }) {
+    return cancelledByUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ClientFailure value)? clientFailure,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_EmailAlredyInUse value)? emailAlredyInUse,
+    TResult? Function(_InvalidCredentials value)? invalidCredentials,
+    TResult? Function(_CancelledByUser value)? cancelledByUser,
+  }) {
+    return cancelledByUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ClientFailure value)? clientFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_EmailAlredyInUse value)? emailAlredyInUse,
+    TResult Function(_InvalidCredentials value)? invalidCredentials,
+    TResult Function(_CancelledByUser value)? cancelledByUser,
+    required TResult orElse(),
+  }) {
+    if (cancelledByUser != null) {
+      return cancelledByUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CancelledByUser implements AuthFailure {
+  const factory _CancelledByUser() = _$CancelledByUserImpl;
 }

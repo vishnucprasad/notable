@@ -4,6 +4,7 @@ part of 'signin_bloc.dart';
 class SigninState with _$SigninState {
   const factory SigninState({
     required bool isSubmitting,
+    required bool hidePassword,
     required bool showValidationError,
     required Credentials credentials,
     required Option<Either<AuthFailure, Unit>> failureOrSuccessOption,
@@ -12,6 +13,7 @@ class SigninState with _$SigninState {
   factory SigninState.initial() {
     return SigninState(
       isSubmitting: false,
+      hidePassword: true,
       showValidationError: false,
       credentials: Credentials.empty(),
       failureOrSuccessOption: none(),

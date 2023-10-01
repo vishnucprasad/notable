@@ -3,8 +3,8 @@ import 'package:notable/presentation/core/colors.dart';
 import 'package:notable/presentation/core/constants.dart';
 import 'package:notable/presentation/pages/signin_page/widgets/email_input_field.dart';
 import 'package:notable/presentation/pages/signin_page/widgets/password_input_field.dart';
-import 'package:notable/presentation/pages/signin_page/widgets/remember_checkbox.dart';
 import 'package:notable/presentation/pages/signin_page/widgets/signin_button.dart';
+import 'package:notable/presentation/pages/signin_page/widgets/signin_with_google_button.dart';
 import 'package:notable/presentation/pages/signin_page/widgets/signup_button.dart';
 
 class SigninBody extends StatelessWidget {
@@ -31,7 +31,7 @@ class SigninBody extends StatelessWidget {
               ),
             ),
             Container(
-              height: size.height - size.height / 2,
+              height: size.height / 2,
               padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
                 color: isDarkMode ? kSecondaryDarkColor : kSecondaryLightColor,
@@ -54,8 +54,6 @@ class SigninBody extends StatelessWidget {
                   kHeightMedium,
                   const PasswordInputField(),
                   kHeightMedium,
-                  const RememberCheckbox(),
-                  kHeightMedium,
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -64,6 +62,8 @@ class SigninBody extends StatelessWidget {
                       Expanded(child: SignupButton()),
                     ],
                   ),
+                  kHeightMedium,
+                  const SigninWithGoogleButton()
                 ],
               ),
             )
