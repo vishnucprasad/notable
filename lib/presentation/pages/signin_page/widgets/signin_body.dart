@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notable/application/auth/signin/signin_bloc.dart';
 import 'package:notable/presentation/core/colors.dart';
 import 'package:notable/presentation/core/constants.dart';
 import 'package:notable/presentation/pages/signin_page/widgets/email_input_field.dart';
@@ -40,31 +42,49 @@ class SigninBody extends StatelessWidget {
                   topRight: Radius.circular(48),
                 ),
               ),
-              child: Column(
-                children: [
-                  Text(
-                    'Signin',
-                    style: headLineText?.copyWith(
-                      fontWeight: FontWeight.w900,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                  ),
-                  kHeightLarge,
-                  const EmailInputField(),
-                  kHeightMedium,
-                  const PasswordInputField(),
-                  kHeightMedium,
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: BlocBuilder<SigninBloc, SigninState>(
+                builder: (context, state) {
+                  return Column(
                     children: [
-                      Expanded(child: SigninButton()),
-                      kWidthMedium,
-                      Expanded(child: SignupButton()),
+                      Text(
+                        state.isSubmitting ? 'Signing in' : 'Signin',
+                        style: headLineText?.copyWith(
+                          fontWeight: FontWeight.w900,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      kHeightLarge,
+                      if (state.isSubmitting)
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: size.width / 1.25,
+                              child: LinearProgressIndicator(
+                                backgroundColor: isDarkMode
+                                    ? kSecondaryDarkColor
+                                    : kSecondaryLightColor,
+                              ),
+                            ),
+                            kHeightLarge,
+                          ],
+                        ),
+                      const EmailInputField(),
+                      kHeightMedium,
+                      const PasswordInputField(),
+                      kHeightMedium,
+                      const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(child: SigninButton()),
+                          kWidthMedium,
+                          Expanded(child: SignupButton()),
+                        ],
+                      ),
+                      kHeightMedium,
+                      const SigninWithGoogleButton()
                     ],
-                  ),
-                  kHeightMedium,
-                  const SigninWithGoogleButton()
-                ],
+                  );
+                },
               ),
             )
           ],
