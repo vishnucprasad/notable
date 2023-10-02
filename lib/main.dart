@@ -7,7 +7,7 @@ import 'package:notable/presentation/notable_app.dart';
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   Paint.enableDithering = true;
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   await configureInjection(Environment.prod);
   runApp(NotableApp());
 }
