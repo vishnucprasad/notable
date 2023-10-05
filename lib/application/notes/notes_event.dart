@@ -6,4 +6,7 @@ class NotesEvent with _$NotesEvent {
     required Week week,
     required DateTime date,
   }) = _GetDateList;
+  const factory NotesEvent.changeSelectedDateIndex(
+    int index,
+  ) = _ChangeSelectedDateIndex;
 }

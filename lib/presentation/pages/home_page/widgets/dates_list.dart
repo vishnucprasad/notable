@@ -21,7 +21,9 @@ class DatesList extends StatelessWidget {
               (index) => DateButton(
                 date: state.dateList[index],
                 isSelected: state.selectedDateIndex == index,
-                onPressed: () {},
+                onPressed: () => context
+                    .read<NotesBloc>()
+                    .add(NotesEvent.changeSelectedDateIndex(index)),
               ),
             ),
           ),

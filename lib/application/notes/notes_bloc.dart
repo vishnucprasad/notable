@@ -39,6 +39,9 @@ class NotesBloc extends Bloc<NotesEvent, NotesState> {
             )),
           ));
         },
+        changeSelectedDateIndex: (e) async => emit(state.copyWith(
+          selectedDateIndex: e.index,
+        )),
       );
     });
   }

@@ -16,43 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NotesEvent {
-  Week get week => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Week week, DateTime date) getDateList,
+    required TResult Function(int index) changeSelectedDateIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Week week, DateTime date)? getDateList,
+    TResult? Function(int index)? changeSelectedDateIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Week week, DateTime date)? getDateList,
+    TResult Function(int index)? changeSelectedDateIndex,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetDateList value) getDateList,
+    required TResult Function(_ChangeSelectedDateIndex value)
+        changeSelectedDateIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetDateList value)? getDateList,
+    TResult? Function(_ChangeSelectedDateIndex value)? changeSelectedDateIndex,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetDateList value)? getDateList,
+    TResult Function(_ChangeSelectedDateIndex value)? changeSelectedDateIndex,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $NotesEventCopyWith<NotesEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,8 +62,6 @@ abstract class $NotesEventCopyWith<$Res> {
   factory $NotesEventCopyWith(
           NotesEvent value, $Res Function(NotesEvent) then) =
       _$NotesEventCopyWithImpl<$Res, NotesEvent>;
-  @useResult
-  $Res call({Week week, DateTime date});
 }
 
 /// @nodoc
@@ -74,33 +73,13 @@ class _$NotesEventCopyWithImpl<$Res, $Val extends NotesEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? week = null,
-    Object? date = null,
-  }) {
-    return _then(_value.copyWith(
-      week: null == week
-          ? _value.week
-          : week // ignore: cast_nullable_to_non_nullable
-              as Week,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetDateListImplCopyWith<$Res>
-    implements $NotesEventCopyWith<$Res> {
+abstract class _$$GetDateListImplCopyWith<$Res> {
   factory _$$GetDateListImplCopyWith(
           _$GetDateListImpl value, $Res Function(_$GetDateListImpl) then) =
       __$$GetDateListImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({Week week, DateTime date});
 }
@@ -169,6 +148,7 @@ class _$GetDateListImpl implements _GetDateList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Week week, DateTime date) getDateList,
+    required TResult Function(int index) changeSelectedDateIndex,
   }) {
     return getDateList(week, date);
   }
@@ -177,6 +157,7 @@ class _$GetDateListImpl implements _GetDateList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Week week, DateTime date)? getDateList,
+    TResult? Function(int index)? changeSelectedDateIndex,
   }) {
     return getDateList?.call(week, date);
   }
@@ -185,6 +166,7 @@ class _$GetDateListImpl implements _GetDateList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Week week, DateTime date)? getDateList,
+    TResult Function(int index)? changeSelectedDateIndex,
     required TResult orElse(),
   }) {
     if (getDateList != null) {
@@ -197,6 +179,8 @@ class _$GetDateListImpl implements _GetDateList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetDateList value) getDateList,
+    required TResult Function(_ChangeSelectedDateIndex value)
+        changeSelectedDateIndex,
   }) {
     return getDateList(this);
   }
@@ -205,6 +189,7 @@ class _$GetDateListImpl implements _GetDateList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetDateList value)? getDateList,
+    TResult? Function(_ChangeSelectedDateIndex value)? changeSelectedDateIndex,
   }) {
     return getDateList?.call(this);
   }
@@ -213,6 +198,7 @@ class _$GetDateListImpl implements _GetDateList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetDateList value)? getDateList,
+    TResult Function(_ChangeSelectedDateIndex value)? changeSelectedDateIndex,
     required TResult orElse(),
   }) {
     if (getDateList != null) {
@@ -227,14 +213,149 @@ abstract class _GetDateList implements NotesEvent {
       {required final Week week,
       required final DateTime date}) = _$GetDateListImpl;
 
-  @override
   Week get week;
-  @override
   DateTime get date;
-  @override
   @JsonKey(ignore: true)
   _$$GetDateListImplCopyWith<_$GetDateListImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeSelectedDateIndexImplCopyWith<$Res> {
+  factory _$$ChangeSelectedDateIndexImplCopyWith(
+          _$ChangeSelectedDateIndexImpl value,
+          $Res Function(_$ChangeSelectedDateIndexImpl) then) =
+      __$$ChangeSelectedDateIndexImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$ChangeSelectedDateIndexImplCopyWithImpl<$Res>
+    extends _$NotesEventCopyWithImpl<$Res, _$ChangeSelectedDateIndexImpl>
+    implements _$$ChangeSelectedDateIndexImplCopyWith<$Res> {
+  __$$ChangeSelectedDateIndexImplCopyWithImpl(
+      _$ChangeSelectedDateIndexImpl _value,
+      $Res Function(_$ChangeSelectedDateIndexImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$ChangeSelectedDateIndexImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeSelectedDateIndexImpl implements _ChangeSelectedDateIndex {
+  const _$ChangeSelectedDateIndexImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'NotesEvent.changeSelectedDateIndex(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeSelectedDateIndexImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeSelectedDateIndexImplCopyWith<_$ChangeSelectedDateIndexImpl>
+      get copyWith => __$$ChangeSelectedDateIndexImplCopyWithImpl<
+          _$ChangeSelectedDateIndexImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Week week, DateTime date) getDateList,
+    required TResult Function(int index) changeSelectedDateIndex,
+  }) {
+    return changeSelectedDateIndex(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Week week, DateTime date)? getDateList,
+    TResult? Function(int index)? changeSelectedDateIndex,
+  }) {
+    return changeSelectedDateIndex?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Week week, DateTime date)? getDateList,
+    TResult Function(int index)? changeSelectedDateIndex,
+    required TResult orElse(),
+  }) {
+    if (changeSelectedDateIndex != null) {
+      return changeSelectedDateIndex(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetDateList value) getDateList,
+    required TResult Function(_ChangeSelectedDateIndex value)
+        changeSelectedDateIndex,
+  }) {
+    return changeSelectedDateIndex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetDateList value)? getDateList,
+    TResult? Function(_ChangeSelectedDateIndex value)? changeSelectedDateIndex,
+  }) {
+    return changeSelectedDateIndex?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetDateList value)? getDateList,
+    TResult Function(_ChangeSelectedDateIndex value)? changeSelectedDateIndex,
+    required TResult orElse(),
+  }) {
+    if (changeSelectedDateIndex != null) {
+      return changeSelectedDateIndex(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeSelectedDateIndex implements NotesEvent {
+  const factory _ChangeSelectedDateIndex(final int index) =
+      _$ChangeSelectedDateIndexImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$ChangeSelectedDateIndexImplCopyWith<_$ChangeSelectedDateIndexImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
