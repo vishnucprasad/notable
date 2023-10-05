@@ -7,6 +7,7 @@ class NotesState with _$NotesState {
     required bool isSubmitting,
     required bool showError,
     required List<DateTime> dateList,
+    required int selectedDateIndex,
     required Option<Either<NotesFailure, dynamic>> failureOrSuccessOption,
   }) = _NotesState;
 
@@ -16,6 +17,8 @@ class NotesState with _$NotesState {
       isSubmitting: false,
       showError: false,
       dateList: List.empty(),
+      selectedDateIndex:
+          DateTime.now().weekday < 7 ? DateTime.now().weekday : 0,
       failureOrSuccessOption: none(),
     );
   }

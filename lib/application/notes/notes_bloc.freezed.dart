@@ -243,6 +243,7 @@ mixin _$NotesState {
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showError => throw _privateConstructorUsedError;
   List<DateTime> get dateList => throw _privateConstructorUsedError;
+  int get selectedDateIndex => throw _privateConstructorUsedError;
   Option<Either<NotesFailure, dynamic>> get failureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -262,6 +263,7 @@ abstract class $NotesStateCopyWith<$Res> {
       bool isSubmitting,
       bool showError,
       List<DateTime> dateList,
+      int selectedDateIndex,
       Option<Either<NotesFailure, dynamic>> failureOrSuccessOption});
 }
 
@@ -282,6 +284,7 @@ class _$NotesStateCopyWithImpl<$Res, $Val extends NotesState>
     Object? isSubmitting = null,
     Object? showError = null,
     Object? dateList = null,
+    Object? selectedDateIndex = null,
     Object? failureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
@@ -301,6 +304,10 @@ class _$NotesStateCopyWithImpl<$Res, $Val extends NotesState>
           ? _value.dateList
           : dateList // ignore: cast_nullable_to_non_nullable
               as List<DateTime>,
+      selectedDateIndex: null == selectedDateIndex
+          ? _value.selectedDateIndex
+          : selectedDateIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -322,6 +329,7 @@ abstract class _$$NotesStateImplCopyWith<$Res>
       bool isSubmitting,
       bool showError,
       List<DateTime> dateList,
+      int selectedDateIndex,
       Option<Either<NotesFailure, dynamic>> failureOrSuccessOption});
 }
 
@@ -340,6 +348,7 @@ class __$$NotesStateImplCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? showError = null,
     Object? dateList = null,
+    Object? selectedDateIndex = null,
     Object? failureOrSuccessOption = null,
   }) {
     return _then(_$NotesStateImpl(
@@ -359,6 +368,10 @@ class __$$NotesStateImplCopyWithImpl<$Res>
           ? _value._dateList
           : dateList // ignore: cast_nullable_to_non_nullable
               as List<DateTime>,
+      selectedDateIndex: null == selectedDateIndex
+          ? _value.selectedDateIndex
+          : selectedDateIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -375,6 +388,7 @@ class _$NotesStateImpl implements _NotesState {
       required this.isSubmitting,
       required this.showError,
       required final List<DateTime> dateList,
+      required this.selectedDateIndex,
       required this.failureOrSuccessOption})
       : _dateList = dateList;
 
@@ -393,11 +407,13 @@ class _$NotesStateImpl implements _NotesState {
   }
 
   @override
+  final int selectedDateIndex;
+  @override
   final Option<Either<NotesFailure, dynamic>> failureOrSuccessOption;
 
   @override
   String toString() {
-    return 'NotesState(isLoading: $isLoading, isSubmitting: $isSubmitting, showError: $showError, dateList: $dateList, failureOrSuccessOption: $failureOrSuccessOption)';
+    return 'NotesState(isLoading: $isLoading, isSubmitting: $isSubmitting, showError: $showError, dateList: $dateList, selectedDateIndex: $selectedDateIndex, failureOrSuccessOption: $failureOrSuccessOption)';
   }
 
   @override
@@ -412,6 +428,8 @@ class _$NotesStateImpl implements _NotesState {
             (identical(other.showError, showError) ||
                 other.showError == showError) &&
             const DeepCollectionEquality().equals(other._dateList, _dateList) &&
+            (identical(other.selectedDateIndex, selectedDateIndex) ||
+                other.selectedDateIndex == selectedDateIndex) &&
             (identical(other.failureOrSuccessOption, failureOrSuccessOption) ||
                 other.failureOrSuccessOption == failureOrSuccessOption));
   }
@@ -423,6 +441,7 @@ class _$NotesStateImpl implements _NotesState {
       isSubmitting,
       showError,
       const DeepCollectionEquality().hash(_dateList),
+      selectedDateIndex,
       failureOrSuccessOption);
 
   @JsonKey(ignore: true)
@@ -438,6 +457,7 @@ abstract class _NotesState implements NotesState {
       required final bool isSubmitting,
       required final bool showError,
       required final List<DateTime> dateList,
+      required final int selectedDateIndex,
       required final Option<Either<NotesFailure, dynamic>>
           failureOrSuccessOption}) = _$NotesStateImpl;
 
@@ -449,6 +469,8 @@ abstract class _NotesState implements NotesState {
   bool get showError;
   @override
   List<DateTime> get dateList;
+  @override
+  int get selectedDateIndex;
   @override
   Option<Either<NotesFailure, dynamic>> get failureOrSuccessOption;
   @override
