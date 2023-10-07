@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 import 'package:notable/domain/core/value_failure.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
@@ -24,4 +25,46 @@ Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
     return right(input);
   }
   return left(ValueFailure.empty(failedValue: input));
+}
+
+Either<ValueFailure<Document>, Document> validateDocumentNotEmpty(
+  Document input,
+) {
+  if (input.isEmpty()) {
+    return left(ValueFailure.empty(failedValue: input));
+  }
+  return right(input);
+}
+
+Either<ValueFailure<String>, String> validateMaxStringLength(
+  String input,
+  int maxLength,
+) {
+  if (input.length <= maxLength) {
+    return right(input);
+  }
+  return left(ValueFailure.exceedingLength(
+    failedValue: input,
+    maxLength: maxLength,
+  ));
+}
+
+Either<ValueFailure<Document>, Document> validateMaxDocumentLength(
+  Document input,
+  int maxLength,
+) {
+  if (input.length <= maxLength) {
+    return right(input);
+  }
+  return left(ValueFailure.exceedingLength(
+    failedValue: input,
+    maxLength: maxLength,
+  ));
+}
+
+Either<ValueFailure<String>, String> validateSingleLine(String input) {
+  if (input.contains('\n')) {
+    return left(ValueFailure.multiLine(failedValue: input));
+  }
+  return right(input);
 }
