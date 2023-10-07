@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notable/application/auth/auth_bloc.dart';
-import 'package:notable/application/notes/notes_bloc.dart';
-import 'package:notable/domain/core/constants.dart';
 import 'package:notable/injection.dart';
 import 'package:notable/presentation/core/globals.dart';
 import 'package:notable/presentation/router/app_router.dart';
@@ -20,19 +18,12 @@ class NotableApp extends StatelessWidget {
         BlocProvider(create: (_) {
           return getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested());
         }),
-        BlocProvider(create: (_) => getIt<NotesBloc>()),
       ],
       child: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           state.map(
             initial: (_) => null,
-            authenticated: (_) {
-              context.read<NotesBloc>().add(NotesEvent.getDateList(
-                    week: Week.current,
-                    date: DateTime.now(),
-                  ));
-              _appRouter.replace(const HomeRoute());
-            },
+            authenticated: (_) => _appRouter.replace(const HomeRoute()),
             unauthenticated: (_) => _appRouter.replace(const SigninRoute()),
           );
         },

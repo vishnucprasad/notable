@@ -16,7 +16,7 @@ class NotableAppBar extends StatelessWidget {
       children: [
         kWidth,
         Container(
-          height: 75,
+          height: 50,
           width: 200,
           decoration: BoxDecoration(
             image: DecorationImage(
