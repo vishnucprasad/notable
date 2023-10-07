@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notable/application/notes/notes_bloc.dart';
 import 'package:notable/presentation/core/colors.dart';
+import 'package:notable/presentation/router/app_router.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({
@@ -54,7 +56,7 @@ class BottomBar extends StatelessWidget {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () => context.pushRoute(const CreateNoteRoute()),
                 child: Icon(
                   Icons.add,
                   size: 24,
