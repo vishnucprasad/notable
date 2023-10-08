@@ -24,10 +24,11 @@ class NotesGridItem extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
-              DateFormat.yMMMEd().format(DateTime.now()),
+              DateFormat.yMMMEd().format(DateTime.now()).toUpperCase(),
               style: const TextStyle(
                 color: kLightGreyColor,
                 fontWeight: FontWeight.bold,
+                fontSize: 12,
               ),
             ),
           ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:notable/presentation/core/colors.dart';
 import 'package:notable/presentation/core/constants.dart';
 import 'package:notable/presentation/core/extensions/dialog_extension.dart';
+import 'package:notable/presentation/pages/create_note_page/widgets/color_picker_button.dart';
 import 'package:notable/presentation/pages/create_note_page/widgets/date_picker_button.dart';
 import 'package:notable/presentation/pages/create_note_page/widgets/note_input_field.dart';
 import 'package:notable/presentation/pages/create_note_page/widgets/title_input_field.dart';
@@ -44,7 +45,12 @@ class CreateNotePage extends StatelessWidget {
               kHeightMedium,
               TitleInputField(),
               kHeightMedium,
-              DatePickerButton(),
+              Row(
+                children: [
+                  DatePickerButton(),
+                  ColorPickerButton(),
+                ],
+              ),
               kHeightMedium,
               Expanded(child: NoteInputField()),
             ],
