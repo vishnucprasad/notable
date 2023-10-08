@@ -16,8 +16,8 @@ class Credentials with _$Credentials {
 
   factory Credentials.empty() {
     return Credentials(
-      emailAddress: EmailAddress("input"),
-      password: Password("input"),
+      emailAddress: EmailAddress(''),
+      password: Password(''),
     );
   }
 
