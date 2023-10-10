@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:notable/domain/core/extensions.dart';
 import 'package:notable/domain/core/value_failure.dart';
 import 'package:notable/domain/core/value_objects.dart';
+import 'package:notable/presentation/core/colors.dart';
 
 part 'note.freezed.dart';
 
@@ -26,7 +26,7 @@ class Note with _$Note {
       title: NoteTitle(''),
       document: NoteDocument(Document()),
       date: DateTime.now(),
-      colorString: Colors.transparent.toHex(),
+      colorString: kLightColor.toHex(),
     );
   }
 

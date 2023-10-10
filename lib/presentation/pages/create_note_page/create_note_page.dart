@@ -1,12 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:notable/presentation/core/colors.dart';
-import 'package:notable/presentation/core/constants.dart';
-import 'package:notable/presentation/core/extensions/dialog_extension.dart';
-import 'package:notable/presentation/pages/create_note_page/widgets/color_picker_button.dart';
-import 'package:notable/presentation/pages/create_note_page/widgets/date_picker_button.dart';
-import 'package:notable/presentation/pages/create_note_page/widgets/note_input_field.dart';
-import 'package:notable/presentation/pages/create_note_page/widgets/title_input_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notable/application/notes/note_form/note_form_bloc.dart';
+import 'package:notable/injection.dart';
+import 'package:notable/presentation/pages/create_note_page/widgets/create_note_listener.dart';
 
 @RoutePage()
 class CreateNotePage extends StatelessWidget {
@@ -14,49 +11,9 @@ class CreateNotePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
-    return WillPopScope(
-      onWillPop: () async {
-        final value = await context.showConfirmationDialog(
-          title: 'Are you sure you want to exit without saving ?',
-          icon: Icons.warning,
-        );
-
-        return value == true;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: const Text('Create note'),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.save),
-            ),
-          ],
-          backgroundColor: isDarkMode ? kDarkColor : kLightColor,
-          foregroundColor: isDarkMode ? kLightColor : kDarkColor,
-        ),
-        body: const SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              kHeightMedium,
-              TitleInputField(),
-              kHeightMedium,
-              Row(
-                children: [
-                  DatePickerButton(),
-                  ColorPickerButton(),
-                ],
-              ),
-              kHeightMedium,
-              Expanded(child: NoteInputField()),
-            ],
-          ),
-        ),
-      ),
+    return BlocProvider(
+      create: (context) => getIt<NoteFormBloc>(),
+      child: const CreateNoteListener(),
     );
   }
 }

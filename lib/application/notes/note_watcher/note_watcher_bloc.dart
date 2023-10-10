@@ -35,6 +35,7 @@ class NoteWatcherBloc extends Bloc<NoteWatcherEvent, NoteWatcherState> {
           ));
         },
       );
+      print(state.toString());
     });
   }
 
