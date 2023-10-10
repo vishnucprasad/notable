@@ -36,26 +36,61 @@ class NotesRepository implements INotesRepository {
           e.message!.contains('PERMISSION_DENIED')) {
         return left(const NotesFailure.permissionDenied());
       }
-
       return left(const NotesFailure.unexpected());
     });
   }
 
   @override
-  Future<Either<NotesFailure, Unit>> create(Note note) {
-    // TODO: implement create
-    throw UnimplementedError();
+  Future<Either<NotesFailure, Unit>> create(Note note) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final noteDto = NoteDto.fromDomain(note);
+
+      await userDoc.notesCollection.doc(noteDto.id).set(noteDto.toJson());
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.message != null && e.message!.contains('PERMISSION_DENIED')) {
+        return left(const NotesFailure.permissionDenied());
+      }
+      return left(const NotesFailure.unexpected());
+    }
   }
 
   @override
-  Future<Either<NotesFailure, Unit>> update(Note note) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Either<NotesFailure, Unit>> update(Note note) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final noteDto = NoteDto.fromDomain(note);
+
+      await userDoc.notesCollection.doc(noteDto.id).update(noteDto.toJson());
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.message != null) {
+        if (e.message!.contains('PERMISSION_DENIED')) {
+          return left(const NotesFailure.permissionDenied());
+        }
+        return left(const NotesFailure.unableToUpdate());
+      }
+      return left(const NotesFailure.unexpected());
+    }
   }
 
   @override
-  Future<Either<NotesFailure, Unit>> delete(Note note) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<Either<NotesFailure, Unit>> delete(Note note) async {
+    try {
+      final userDoc = await _firestore.userDocument();
+      final noteId = note.id.getOrCrash();
+
+      await userDoc.notesCollection.doc(noteId).delete();
+      return right(unit);
+    } on PlatformException catch (e) {
+      if (e.message != null) {
+        if (e.message!.contains('PERMISSION_DENIED')) {
+          return left(const NotesFailure.permissionDenied());
+        }
+        return left(const NotesFailure.unableToDelete());
+      }
+      return left(const NotesFailure.unexpected());
+    }
   }
 }

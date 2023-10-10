@@ -6,4 +6,6 @@ part 'notes_failure.freezed.dart';
 class NotesFailure with _$NotesFailure {
   const factory NotesFailure.unexpected() = _Unexpected;
   const factory NotesFailure.permissionDenied() = _PermissionDenied;
+  const factory NotesFailure.unableToUpdate() = _UnableToUpdate;
+  const factory NotesFailure.unableToDelete() = _UnableToDelete;
 }
