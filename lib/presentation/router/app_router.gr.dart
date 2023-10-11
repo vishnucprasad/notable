@@ -39,6 +39,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashPage(),
       );
     },
+    ViewNoteRoute.name: (routeData) {
+      final args = routeData.argsAs<ViewNoteRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ViewNotePage(
+          key: args.key,
+          note: args.note,
+        ),
+      );
+    },
   };
 }
 
@@ -96,4 +106,42 @@ class SplashRoute extends PageRouteInfo<void> {
   static const String name = 'SplashRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ViewNotePage]
+class ViewNoteRoute extends PageRouteInfo<ViewNoteRouteArgs> {
+  ViewNoteRoute({
+    Key? key,
+    required Note note,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ViewNoteRoute.name,
+          args: ViewNoteRouteArgs(
+            key: key,
+            note: note,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ViewNoteRoute';
+
+  static const PageInfo<ViewNoteRouteArgs> page =
+      PageInfo<ViewNoteRouteArgs>(name);
+}
+
+class ViewNoteRouteArgs {
+  const ViewNoteRouteArgs({
+    this.key,
+    required this.note,
+  });
+
+  final Key? key;
+
+  final Note note;
+
+  @override
+  String toString() {
+    return 'ViewNoteRouteArgs{key: $key, note: $note}';
+  }
 }
