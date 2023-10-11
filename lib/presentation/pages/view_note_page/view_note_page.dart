@@ -26,9 +26,12 @@ class ViewNotePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: RichText(
-          text: const TextSpan(
+          text: TextSpan(
             text: 'Note',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(
+              fontSize: 20,
+              color: isDarkMode ? kLightColor : kDarkColor,
+            ),
           ),
         ),
         actions: [
