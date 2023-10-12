@@ -15,10 +15,8 @@ class ViewNoteBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (note == null) {
-      return Center(
-        child: RichText(
-          text: const TextSpan(text: 'Something went wrong'),
-        ),
+      return const Center(
+        child: CircularProgressIndicator(),
       );
     }
 

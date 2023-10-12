@@ -44,7 +44,7 @@ class DatePickerButton extends StatelessWidget {
             onPressed: () async {
               final selectedDate = await showDatePicker(
                 context: context,
-                initialDate: DateTime.now(),
+                initialDate: state.note.date,
                 firstDate: DateTime(2000),
                 lastDate: DateTime(2100),
                 builder: (context, child) {

@@ -1,4 +1,3 @@
-import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notable/application/auth/auth_bloc.dart';
@@ -32,33 +31,19 @@ class NotableApp extends StatelessWidget {
           return getIt<NoteActorBloc>();
         }),
       ],
-      child: MultiBlocListener(
-        listeners: [
-          BlocListener<AuthBloc, AuthState>(
-            listener: (context, state) {
-              state.map(
-                initial: (_) => null,
-                authenticated: (_) {
-                  context
-                      .read<NoteWatcherBloc>()
-                      .add(const NoteWatcherEvent.watchAllStarted());
-                  _appRouter.replace(const HomeRoute());
-                },
-                unauthenticated: (_) => _appRouter.replace(const SigninRoute()),
-              );
+      child: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          state.map(
+            initial: (_) => null,
+            authenticated: (_) {
+              context
+                  .read<NoteWatcherBloc>()
+                  .add(const NoteWatcherEvent.watchAllStarted());
+              _appRouter.replace(const HomeRoute());
             },
-          ),
-          BlocListener<NoteActorBloc, NoteActorState>(
-            listener: (context, state) {
-              state.maybeMap(
-                deleteFailure: (f) => FlushbarHelper.createError(
-                  message: 'Failed to delete note',
-                ).show(context),
-                orElse: () {},
-              );
-            },
-          ),
-        ],
+            unauthenticated: (_) => _appRouter.replace(const SigninRoute()),
+          );
+        },
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           theme: buildLightTheme(),

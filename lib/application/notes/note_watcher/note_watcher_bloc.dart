@@ -31,7 +31,9 @@ class NoteWatcherBloc extends Bloc<NoteWatcherEvent, NoteWatcherState> {
         notesReceived: (e) async {
           emit(e.failureOrNotes.fold(
             (f) => NoteWatcherState.loadFailure(f),
-            (notes) => NoteWatcherState.loadSuccess(notes),
+            (notes) => NoteWatcherState.loadSuccess(notes.sortedByDescending(
+              (note) => note.date,
+            )),
           ));
         },
       );

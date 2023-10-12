@@ -1,13 +1,16 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kt_dart/kt.dart';
+import 'package:notable/application/notes/note_actor/note_actor_bloc.dart';
 import 'package:notable/application/notes/note_form/note_form_bloc.dart';
 import 'package:notable/application/notes/note_watcher/note_watcher_bloc.dart';
 import 'package:notable/domain/core/value_objects.dart';
 import 'package:notable/domain/notes/note.dart';
 import 'package:notable/presentation/core/colors.dart';
+import 'package:notable/presentation/core/extensions/dialog_extension.dart';
 import 'package:notable/presentation/pages/view_note_page/widgets/view_note_body.dart';
 import 'package:notable/presentation/router/app_router.dart';
 
@@ -55,15 +58,47 @@ class ViewNotePage extends StatelessWidget {
                     icon: const Icon(Icons.edit_note),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      final confirmed = await context.showConfirmationDialog(
+                        title: 'Are you sure you want to delete this note ?',
+                        icon: Icons.delete,
+                      );
+
+                      if (confirmed == true && note != null) {
+                        // ignore: use_build_context_synchronously
+                        context
+                            .read<NoteActorBloc>()
+                            .add(NoteActorEvent.deleted(note));
+                      }
+                    },
                     icon: const Icon(Icons.delete),
                   ),
                 ],
                 backgroundColor: isDarkMode ? kDarkColor : kLightColor,
                 foregroundColor: isDarkMode ? kLightColor : kDarkColor,
               ),
-              body: SafeArea(
-                child: ViewNoteBody(note: note),
+              body: BlocConsumer<NoteActorBloc, NoteActorState>(
+                listener: (context, state) {
+                  state.maybeMap(
+                    deleteFailure: (_) => FlushbarHelper.createError(
+                      message: 'Failed to delete note',
+                    ).show(context),
+                    deleteSuccess: (_) => context.popRoute(),
+                    orElse: () {},
+                  );
+                },
+                builder: (context, state) {
+                  return state.maybeMap(
+                    actionInProgress: (_) => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    orElse: () {
+                      return SafeArea(
+                        child: ViewNoteBody(note: note),
+                      );
+                    },
+                  );
+                },
               ),
             );
           },
