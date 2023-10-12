@@ -21,7 +21,7 @@ class NoteFormBloc extends Bloc<NoteFormEvent, NoteFormState> {
         initialized: (e) async {
           emit(e.initialNoteOption.fold(
             () => state,
-            (initialNote) => state.copyWith(
+            (initialNote) => NoteFormState.initial().copyWith(
               note: initialNote,
               isEditing: true,
             ),

@@ -22,7 +22,7 @@ class NotesGridItem extends StatelessWidget {
     return StaggeredGridTile.fit(
       crossAxisCellCount: 1,
       child: GestureDetector(
-        onTap: () => context.pushRoute(ViewNoteRoute(note: note)),
+        onTap: () => context.pushRoute(ViewNoteRoute(noteId: note.id)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

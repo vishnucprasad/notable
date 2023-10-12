@@ -8,7 +8,15 @@ class TitleInputField extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = useTextEditingController();
+    final controller = useTextEditingController(
+      text: context
+          .read<NoteFormBloc>()
+          .state
+          .note
+          .title
+          .value
+          .getOrElse(() => ""),
+    );
     return BlocConsumer<NoteFormBloc, NoteFormState>(
       listenWhen: (p, c) => p.showValidationError != c.showValidationError,
       listener: (context, state) {

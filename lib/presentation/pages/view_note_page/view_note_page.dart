@@ -1,74 +1,77 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_quill/flutter_quill.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kt_dart/kt.dart';
+import 'package:notable/application/notes/note_form/note_form_bloc.dart';
+import 'package:notable/application/notes/note_watcher/note_watcher_bloc.dart';
+import 'package:notable/domain/core/value_objects.dart';
 import 'package:notable/domain/notes/note.dart';
 import 'package:notable/presentation/core/colors.dart';
-import 'package:notable/presentation/core/constants.dart';
+import 'package:notable/presentation/pages/view_note_page/widgets/view_note_body.dart';
+import 'package:notable/presentation/router/app_router.dart';
 
 @RoutePage()
 class ViewNotePage extends StatelessWidget {
   const ViewNotePage({
     super.key,
-    required this.note,
+    required this.noteId,
   });
 
-  final Note note;
+  final UniqueId noteId;
 
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    QuillController controller = QuillController(
-      document: Document.fromDelta(note.document.getOrCrash().toDelta()),
-      selection: const TextSelection.collapsed(offset: 0),
-    );
-
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: RichText(
-          text: TextSpan(
-            text: 'Note',
-            style: TextStyle(
-              fontSize: 20,
-              color: isDarkMode ? kLightColor : kDarkColor,
-            ),
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.edit_note),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.delete),
-          ),
-        ],
-        backgroundColor: isDarkMode ? kDarkColor : kLightColor,
-        foregroundColor: isDarkMode ? kLightColor : kDarkColor,
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: TextSpan(
-                  text: note.title.getOrCrash(),
-                  style: TextStyle(
-                    color: isDarkMode ? kLightColor : kDarkColor,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
+    return BlocBuilder<NoteWatcherBloc, NoteWatcherState>(
+      builder: (context, state) {
+        return state.maybeMap(
+          loadSuccess: (state) {
+            final note = state.notes.find(
+              (note) => note.id == noteId,
+            );
+            return Scaffold(
+              appBar: AppBar(
+                elevation: 0,
+                title: RichText(
+                  text: TextSpan(
+                    text: 'Note',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: isDarkMode ? kLightColor : kDarkColor,
+                    ),
                   ),
                 ),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      context
+                          .read<NoteFormBloc>()
+                          .add(NoteFormEvent.initialized(some(
+                            note ?? Note.empty(),
+                          )));
+                      context.pushRoute(const CreateNoteRoute());
+                    },
+                    icon: const Icon(Icons.edit_note),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.delete),
+                  ),
+                ],
+                backgroundColor: isDarkMode ? kDarkColor : kLightColor,
+                foregroundColor: isDarkMode ? kLightColor : kDarkColor,
               ),
-              kHeightMedium,
-              QuillEditor.basic(controller: controller, readOnly: true),
-            ],
+              body: SafeArea(
+                child: ViewNoteBody(note: note),
+              ),
+            );
+          },
+          orElse: () => const Center(
+            child: Text('Something went wrong'),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

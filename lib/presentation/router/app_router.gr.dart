@@ -45,7 +45,7 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ViewNotePage(
           key: args.key,
-          note: args.note,
+          noteId: args.noteId,
         ),
       );
     },
@@ -113,13 +113,13 @@ class SplashRoute extends PageRouteInfo<void> {
 class ViewNoteRoute extends PageRouteInfo<ViewNoteRouteArgs> {
   ViewNoteRoute({
     Key? key,
-    required Note note,
+    required UniqueId noteId,
     List<PageRouteInfo>? children,
   }) : super(
           ViewNoteRoute.name,
           args: ViewNoteRouteArgs(
             key: key,
-            note: note,
+            noteId: noteId,
           ),
           initialChildren: children,
         );
@@ -133,15 +133,15 @@ class ViewNoteRoute extends PageRouteInfo<ViewNoteRouteArgs> {
 class ViewNoteRouteArgs {
   const ViewNoteRouteArgs({
     this.key,
-    required this.note,
+    required this.noteId,
   });
 
   final Key? key;
 
-  final Note note;
+  final UniqueId noteId;
 
   @override
   String toString() {
-    return 'ViewNoteRouteArgs{key: $key, note: $note}';
+    return 'ViewNoteRouteArgs{key: $key, noteId: $noteId}';
   }
 }

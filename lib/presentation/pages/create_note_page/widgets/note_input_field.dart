@@ -9,7 +9,17 @@ class NoteInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = QuillController.basic();
+    final controller = QuillController(
+      document: Document.fromDelta(context
+          .read<NoteFormBloc>()
+          .state
+          .note
+          .document
+          .value
+          .getOrElse(() => Document())
+          .toDelta()),
+      selection: const TextSelection.collapsed(offset: 0),
+    );
 
     controller.document.changes.listen((event) {
       context

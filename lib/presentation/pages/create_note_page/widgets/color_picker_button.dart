@@ -47,7 +47,7 @@ class ColorPickerButton extends StatelessWidget {
               ),
             ),
             label: Text(
-              kLightColor.toHex(),
+              state.note.colorString,
             ),
             onPressed: () => context.showColorpickerDialog(
               pickerColor: kLightColor.toHex(),

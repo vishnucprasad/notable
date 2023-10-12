@@ -1,6 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notable/application/notes/note_form/note_form_bloc.dart';
+import 'package:notable/domain/notes/note.dart';
 import 'package:notable/presentation/core/colors.dart';
 import 'package:notable/presentation/core/constants.dart';
 import 'package:notable/presentation/core/extensions/dialog_extension.dart';
@@ -20,12 +22,29 @@ class CreateNoteBody extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () async {
-        final value = await context.showConfirmationDialog(
-          title: 'Are you sure you want to exit without saving ?',
-          icon: Icons.warning,
+        final failureOrSuccess =
+            context.read<NoteFormBloc>().state.failureOrSuccessOption;
+        final isRight = failureOrSuccess.fold(
+          () => false,
+          (a) => a.isRight(),
         );
 
-        return value == true;
+        final value = isRight
+            ? true
+            : await context.showConfirmationDialog(
+                title: 'Are you sure you want to exit without saving ?',
+                icon: Icons.warning,
+              );
+
+        if (value == true) {
+          // ignore: use_build_context_synchronously
+          context
+              .read<NoteFormBloc>()
+              .add(NoteFormEvent.initialized(some(Note.empty())));
+          return true;
+        }
+
+        return false;
       },
       child: BlocBuilder<NoteFormBloc, NoteFormState>(
         builder: (context, state) {
