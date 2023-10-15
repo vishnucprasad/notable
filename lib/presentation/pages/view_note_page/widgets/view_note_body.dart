@@ -42,6 +42,7 @@ class ViewNoteBody extends StatelessWidget {
           ),
           kHeightMedium,
           QuillEditor.basic(controller: controller, readOnly: true),
+          kHeightMedium,
         ],
       ),
     );

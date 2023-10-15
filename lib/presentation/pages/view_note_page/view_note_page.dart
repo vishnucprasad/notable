@@ -94,7 +94,9 @@ class ViewNotePage extends StatelessWidget {
                     ),
                     orElse: () {
                       return SafeArea(
-                        child: ViewNoteBody(note: note),
+                        child: SingleChildScrollView(
+                          child: ViewNoteBody(note: note),
+                        ),
                       );
                     },
                   );

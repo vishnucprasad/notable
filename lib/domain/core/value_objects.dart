@@ -51,7 +51,7 @@ class NoteTitle extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
   factory NoteTitle(String input) {
     return NoteTitle._(
-      validateMaxStringLength(input, 60)
+      validateMaxStringLength(input, 120)
           .flatMap(validateStringNotEmpty)
           .flatMap(validateSingleLine),
     );
@@ -64,7 +64,7 @@ class NoteDocument extends ValueObject<Document> {
   final Either<ValueFailure<Document>, Document> value;
   factory NoteDocument(Document input) {
     return NoteDocument._(
-      validateMaxDocumentLength(input, 1000).flatMap(
+      validateMaxDocumentLength(input, 10000).flatMap(
         validateDocumentNotEmpty,
       ),
     );
